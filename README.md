@@ -7,6 +7,7 @@
 # SNMP configuration
 
 **Backup iptables rules and current snmpd.conf:**
+
     sudo tar -cvzf "snmpd-iptables-backup-$(date +%Y%m%d).tgz" /etc/snmp /etc/iptables/rules.v4    
 
 
