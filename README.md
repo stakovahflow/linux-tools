@@ -53,9 +53,8 @@
     agentaddress  127.0.0.1,_192.168.122.11_         # Make sure to add your own IP address here
     view   systemonly  included  .1.3.6.1.2.1        # This should replace what currently exists in the default configuration
     view   systemonly  included  .1.3.6.1.4.1        # This should replace what currently exists in the default configuration
-    createuser _superUser_ SHA-512 _sha512passphrase_ AES _aespassphrase_ # Please adjust as desired
-    rouser _superUser_ authpriv -V systemonly         # Please adjust to match the user of your choosing
-
+    createuser superUser SHA-512 sha512passphrase AES aespassphrase    # Please adjust as desired
+    rouser superUser authpriv -V systemonly          # Please adjust to match the user of your choosing
 
 
 
