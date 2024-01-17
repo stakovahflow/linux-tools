@@ -14,7 +14,7 @@
 
 
 
-**Add iptables firewall rules:**_
+**Add iptables firewall rules:**
 
 **_sudo iptables -A INPUT -p tcp -m tcp --dport 161 -j ACCEPT_**
 
