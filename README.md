@@ -8,7 +8,7 @@
 
 **Backup iptables rules and current snmpd.conf:**
 
-**_sudo tar -cvzf "snmpd-iptables-backup-$(date +%Y%m%d).tgz" /etc/snmp /etc/iptables/rules.v4_**
+    sudo tar -cvzf "snmpd-iptables-backup-$(date +%Y%m%d).tgz" /etc/snmp /etc/iptables/rules.v4    
 
 
 
@@ -16,9 +16,9 @@
 
 **Add iptables firewall rules:**_
 
-**_sudo iptables -A INPUT -p tcp -m tcp --dport 161 -j ACCEPT_**
+    sudo iptables -A INPUT -p tcp -m tcp --dport 161 -j ACCEPT
 
-**_sudo iptables -A INPUT -p udp -m udp --dport 161 -j ACCEPT_**
+    sudo iptables -A INPUT -p udp -m udp --dport 161 -j ACCEPT
 
 
 
@@ -26,7 +26,7 @@
 
 **Save iptables firewall rules:**
 
-**_sudo /usr/sbin/iptables-save | sudo tee /etc/iptables/rules.v4_**
+    sudo /usr/sbin/iptables-save | sudo tee /etc/iptables/rules.v4
 
 
 
@@ -46,23 +46,15 @@
 
 **_nano /etc/snmp/snmpd.conf_**
 
-sysLocation    _1110 Test St., Blah, CA_          # Adjust to match appliance location
-
-sysContact     _Dummy User dummy.user@domain.com_ # Adjust to match your support (team) name and email address
-
-sysServices    72                               # This should be fine as the default
-
-master  agentx                                  # This should be fine as the default
-
-agentaddress  127.0.0.1,_192.168.122.11_          # Make sure to add your own IP address here
-
-_view   systemonly  included  .1.3.6.1.2.1_       # This should replace what currently exists in the default configuration
-
-_view   systemonly  included  .1.3.6.1.4.1_       # This should replace what currently exists in the default configuration
-
-createuser _superUser_ SHA-512 _sha512passphrase_ AES _aespassphrase_ # Please adjust as desired
-
-rouser _superUser_ authpriv -V systemonly         # Please adjust to match the user of your choosing
+    sysLocation     1110 Test St., Blah, CA          # Adjust to match appliance location
+    sysContact      Dummy User dummy.user@domain.com # Adjust to match your support (team) name and email address
+    sysServices     72                               # This should be fine as the default
+    master  agentx                                   # This should be fine as the default
+    agentaddress  127.0.0.1,_192.168.122.11_         # Make sure to add your own IP address here
+    view   systemonly  included  .1.3.6.1.2.1        # This should replace what currently exists in the default configuration
+    view   systemonly  included  .1.3.6.1.4.1        # This should replace what currently exists in the default configuration
+    createuser _superUser_ SHA-512 _sha512passphrase_ AES _aespassphrase_ # Please adjust as desired
+    rouser _superUser_ authpriv -V systemonly         # Please adjust to match the user of your choosing
 
 
 
