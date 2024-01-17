@@ -14,7 +14,7 @@
 
 
 
-**Add iptables firewall rules:**_
+**Add iptables firewall rules:**
 
     sudo iptables -A INPUT -p tcp -m tcp --dport 161 -j ACCEPT
     sudo iptables -A INPUT -p udp -m udp --dport 161 -j ACCEPT
@@ -57,6 +57,8 @@
 
 
 **OIDs for monitoring via SNMP:**
+
+_
 
 CPU Thread/Core Count:
 
@@ -236,5 +238,5 @@ Running Processes:
 Running Process Arguments:
 
     OID: 1.3.6.1.2.1.25.4.2.1.5
-
+_
 
