@@ -72,217 +72,181 @@ rouser _superUser_ authpriv -V systemonly         # Please adjust to match the u
 
 CPU Thread/Core Count:
 
-    _OID: 1.3.6.1.2.1.25.3.3.1.2_
-
+    OID: 1.3.6.1.2.1.25.3.3.1.2
 
 
 Per-CPU Load:
 
-    _OID: 1.3.6.1.2.1.25.3.3.1.2_
-
+    OID: 1.3.6.1.2.1.25.3.3.1.2
 
 
 Load Average 1 minute:
 
-    _OID: 1.3.6.1.4.1.2021.10.1.3.1_
-
+    OID: 1.3.6.1.4.1.2021.10.1.3.1
 
 
 Load Average 5 minutes:
 
-    _OID: 1.3.6.1.4.1.2021.10.1.3.2_
-
+    OID: 1.3.6.1.4.1.2021.10.1.3.2
 
 
 Load Average 15 minutes:
 
-    _OID: 1.3.6.1.4.1.2021.10.1.3.3_
-
+    OID: 1.3.6.1.4.1.2021.10.1.3.3
 
 
 CPU Utilization:
 
-    _OID: 1.3.6.1.4.1.2021.11_
-
+    OID: 1.3.6.1.4.1.2021.11
 
 
 Memory Installed:
 
-    _OID: 1.3.6.1.2.1.25.2.2.0_
-
+    OID: 1.3.6.1.2.1.25.2.2.0
 
 
 Memory In Use:
 
-    _OID: 1.3.6.1.4.1.2021.4.6.0_
-
+    OID: 1.3.6.1.4.1.2021.4.6.0
 
 
 Memory Free:
 
-    _OID: 1.3.6.1.4.1.2021.4.11.0_
-
+    OID: 1.3.6.1.4.1.2021.4.11.0
 
 
 Swap Partition Size:
 
-    _OID: 1.3.6.1.4.1.2021.4.3.0_
-
+    OID: 1.3.6.1.4.1.2021.4.3.0
 
 
 Swap In Use:
 
-    _OID:1.3.6.1.4.1.2021.4.4.0_
-
+    OID:1.3.6.1.4.1.2021.4.4.0
 
 
 Swap Free:
 
-    _OID: 1.3.6.1.4.1.2021.4.5.0_
-
+    OID: 1.3.6.1.4.1.2021.4.5.0
 
 
 Disks Installed:
 
-    _OID: 1.3.6.1.2.1.25.3.8_
-
+    OID: 1.3.6.1.2.1.25.3.8
 
 
 Partition Size for All Mounted Partitions:
 
-    _OID:1.3.6.1.2.1.25.2.3.1.5_
-
+    OID:1.3.6.1.2.1.25.2.3.1.5
 
 
 Partition Mount Point:
 
-    _OID: 1.3.6.1.2.1.25.2.3.1.3_
-
+    OID: 1.3.6.1.2.1.25.2.3.1.3
 
 
 Partition Utilization:
 
-    _OID: 1.3.6.1.2.1.25.2.3.1.6_
-
+    OID: 1.3.6.1.2.1.25.2.3.1.6
 
 
 Total Size of a Storage Area:
 
-    _OID:1.3.6.1.2.1.25.2.3.1.5_
-
+    OID:1.3.6.1.2.1.25.2.3.1.5
 
 
 Used Space of a Storage Area:
 
-    _OID:1.3.6.1.2.1.25.2.3.1.6_
-
+    OID:1.3.6.1.2.1.25.2.3.1.6
 
 
 Running Processes:
 
-    _OID: 1.3.6.1.2.1.25.1.6.0_
-
+    OID: 1.3.6.1.2.1.25.1.6.0
 
 
 Network Interface Name:
 
-    _OID: 1.3.6.1.2.1.2.2.1.2_
-
+    OID: 1.3.6.1.2.1.2.2.1.2
 
 
 Network Interface IP Address:
 
-    _OID:1.3.6.1.2.1.4.20.1.2_
-
+    OID:1.3.6.1.2.1.4.20.1.2
 
 
 Network Interface MAC Address:
 
-    _OID:1.3.6.1.2.1.2.2.1.6_
-
+    OID:1.3.6.1.2.1.2.2.1.6
 
 
 Network interface index number (ifIndex):
 
-    _OID:1.3.6.1.2.1.2.2.1.1_
-
+    OID:1.3.6.1.2.1.2.2.1.1
 
 
 Network interface Description (ifDescr):
 
-    _OID:1.3.6.1.2.1.2.2.1.2_
-
+    OID:1.3.6.1.2.1.2.2.1.2
 
 
 Network interface bytes inbound (ifInOctets):
 
-    _OID:1.3.6.1.2.1.2.2.1.10_
-
+    OID:1.3.6.1.2.1.2.2.1.10
 
 
 Network interface bytes outbound (ifOutOctets):
 
-    _OID:1.3.6.1.2.1.2.2.1.16_
-
+    OID:1.3.6.1.2.1.2.2.1.16
 
 
 Network interface inbound errors (ifInErrors):
 
-    _OID:1.3.6.1.2.1.2.2.1.14_
-
+    OID:1.3.6.1.2.1.2.2.1.14
 
 
 Network interface outbound errors (ifOutErrors):
 
-    _OID:1.3.6.1.2.1.2.2.1.20_
-
+    OID:1.3.6.1.2.1.2.2.1.20
 
 
 Network interface operational status (ifOperStatus) (up/down):
 
-    _OID:1.3.6.1.2.1.2.2.1.8_
-
+    OID:1.3.6.1.2.1.2.2.1.8
 
 
 Packets Received:
 
-    _OID: 1.3.6.1.2.1.2.2.1.11_
-
+    OID: 1.3.6.1.2.1.2.2.1.11
 
 
 Packets Sent: 
 
-    _OID: 1.3.6.1.2.1.2.2.1.17_
-
+    OID: 1.3.6.1.2.1.2.2.1.17
 
 
 SNMP Messages Received:
 
-    _OID:1.3.6.1.2.1.11.1_
-
+    OID:1.3.6.1.2.1.11.1
 
 
 SNMP Messages Sent:
 
-    _OID:1.3.6.1.2.1.11.2_
-
+    OID:1.3.6.1.2.1.11.2
 
 
 Logged in Users:
 
-    _OID: 1.3.6.1.2.1.25.1.5_
-
+    OID: 1.3.6.1.2.1.25.1.5
 
 
 Running Processes:
 
-    _OID: 1.3.6.1.2.1.25.4.2.1.2_
-
+    OID: 1.3.6.1.2.1.25.4.2.1.2
 
 
 Running Process Arguments:
 
-    _OID: 1.3.6.1.2.1.25.4.2.1.5_
-
+    OID: 1.3.6.1.2.1.25.4.2.1.5
 
 
