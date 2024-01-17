@@ -14,7 +14,7 @@
 
 
 
-**Add iptables firewall rules:**
+**Add iptables firewall rules:**_
 
 **_sudo iptables -A INPUT -p tcp -m tcp --dport 161 -j ACCEPT_**
 
@@ -72,215 +72,215 @@ rouser _superUser_ authpriv -V systemonly         # Please adjust to match the u
 
 CPU Thread/Core Count: 
 
-OID: 1.3.6.1.2.1.25.3.3.1.2
+_OID: 1.3.6.1.2.1.25.3.3.1.2_
 
  
 
 Per-CPU Load: 
 
-OID: 1.3.6.1.2.1.25.3.3.1.2
+_OID: 1.3.6.1.2.1.25.3.3.1.2_
 
  
 
 Load Average 1 minute: 
 
-OID: 1.3.6.1.4.1.2021.10.1.3.1
+_OID: 1.3.6.1.4.1.2021.10.1.3.1_
 
  
 
 Load Average 5 minutes: 
 
-OID: 1.3.6.1.4.1.2021.10.1.3.2
+_OID: 1.3.6.1.4.1.2021.10.1.3.2_
 
  
 
 Load Average 15 minutes: 
 
-OID: 1.3.6.1.4.1.2021.10.1.3.3
+_OID: 1.3.6.1.4.1.2021.10.1.3.3_
 
  
 
 CPU Utilization: 
 
-OID: 1.3.6.1.4.1.2021.11
+_OID: 1.3.6.1.4.1.2021.11_
 
  
 
 Memory Installed: 
 
-OID: 1.3.6.1.2.1.25.2.2.0
+_OID: 1.3.6.1.2.1.25.2.2.0_
 
  
 
 Memory In Use: 
 
-OID: 1.3.6.1.4.1.2021.4.6.0
+_OID: 1.3.6.1.4.1.2021.4.6.0_
 
  
 
 Memory Free: 
 
-OID: 1.3.6.1.4.1.2021.4.11.0
+_OID: 1.3.6.1.4.1.2021.4.11.0_
 
  
 
 Swap Partition Size: 
 
-OID: 1.3.6.1.4.1.2021.4.3.0
+_OID: 1.3.6.1.4.1.2021.4.3.0_
 
  
 
 Swap In Use:
 
-OID: 1.3.6.1.4.1.2021.4.4.0
+_OID: 1.3.6.1.4.1.2021.4.4.0_
 
  
 
 Swap Free: 
 
-OID: 1.3.6.1.4.1.2021.4.5.0
+_OID: 1.3.6.1.4.1.2021.4.5.0_
 
  
 
 Disks Installed: 
 
-OID: 1.3.6.1.2.1.25.3.8
+_OID: 1.3.6.1.2.1.25.3.8_
 
  
 
 Partition Size for All Mounted Partitions:
 
-OID: 1.3.6.1.2.1.25.2.3.1.5
+_OID: 1.3.6.1.2.1.25.2.3.1.5_
 
  
 
 Partition Mount Point: 
 
-OID: 1.3.6.1.2.1.25.2.3.1.3
+_OID: 1.3.6.1.2.1.25.2.3.1.3_
 
  
 
 Partition Utilization: 
 
-OID: 1.3.6.1.2.1.25.2.3.1.6
+_OID: 1.3.6.1.2.1.25.2.3.1.6_
 
  
 
 Total Size of a Storage Area:
 
-OID: 1.3.6.1.2.1.25.2.3.1.5
+_OID: 1.3.6.1.2.1.25.2.3.1.5_
 
  
 
 Used Space of a Storage Area:
 
-OID: 1.3.6.1.2.1.25.2.3.1.6
+_OID: 1.3.6.1.2.1.25.2.3.1.6_
 
  
 
 Running Processes: 
 
-OID: 1.3.6.1.2.1.25.1.6.0
+_OID: 1.3.6.1.2.1.25.1.6.0_
 
  
 
 Network Interface Name: 
 
-OID: 1.3.6.1.2.1.2.2.1.2
+_OID: 1.3.6.1.2.1.2.2.1.2_
 
  
 
 Network Interface IP Address:
 
-OID: 1.3.6.1.2.1.4.20.1.2
+_OID: 1.3.6.1.2.1.4.20.1.2_
 
  
 
 Network Interface MAC Address:
 
-OID: 1.3.6.1.2.1.2.2.1.6
+_OID: 1.3.6.1.2.1.2.2.1.6_
 
  
 
 Network interface index number (ifIndex):
 
-OID: 1.3.6.1.2.1.2.2.1.1
+_OID: 1.3.6.1.2.1.2.2.1.1_
 
  
 
 Network interface Description (ifDescr):
 
-OID: 1.3.6.1.2.1.2.2.1.2
+_OID: 1.3.6.1.2.1.2.2.1.2_
 
  
 
 Network interface bytes inbound (ifInOctets):
 
-OID: 1.3.6.1.2.1.2.2.1.10
+_OID: 1.3.6.1.2.1.2.2.1.10_
 
  
 
 Network interface bytes outbound (ifOutOctets):
 
-OID: 1.3.6.1.2.1.2.2.1.16
+_OID: 1.3.6.1.2.1.2.2.1.16_
 
  
 
 Network interface inbound errors (ifInErrors):
 
-OID: 1.3.6.1.2.1.2.2.1.14
+_OID: 1.3.6.1.2.1.2.2.1.14_
 
  
 
 Network interface outbound errors (ifOutErrors):
 
-OID: 1.3.6.1.2.1.2.2.1.20
+_OID: 1.3.6.1.2.1.2.2.1.20_
 
  
 
 Network interface operational status (ifOperStatus) (up/down):
 
-OID: 1.3.6.1.2.1.2.2.1.8
+_OID: 1.3.6.1.2.1.2.2.1.8_
 
  
 
 Packets Received: 
 
-OID: 1.3.6.1.2.1.2.2.1.11
+_OID: 1.3.6.1.2.1.2.2.1.11_
 
  
 
 Packets Sent: 
 
-OID: 1.3.6.1.2.1.2.2.1.17
+_OID: 1.3.6.1.2.1.2.2.1.17_
 
  
 
 SNMP Messages Received:
 
-OID: 1.3.6.1.2.1.11.1
+_OID: 1.3.6.1.2.1.11.1_
 
  
 
 SNMP Messages Sent:
 
-OID: 1.3.6.1.2.1.11.2
+_OID: 1.3.6.1.2.1.11.2_
 
  
 
 Logged in Users:
 
-OID:  1.3.6.1.2.1.25.1.5
+_OID:  1.3.6.1.2.1.25.1.5_
 
  
 
 Running Processes:
 
-OID:  1.3.6.1.2.1.25.4.2.1.2
+_OID:  1.3.6.1.2.1.25.4.2.1.2_
 
  
 
 Running Process Arguments:
 
-OID:  1.3.6.1.2.1.25.4.2.1.5
+_OID:  1.3.6.1.2.1.25.4.2.1.5_
 
