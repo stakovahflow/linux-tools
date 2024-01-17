@@ -32,7 +32,7 @@
 
 **Edit snmp.conf:**
 
-**_nano /etc/snmp/snmp.conf_**
+    nano /etc/snmp/snmp.conf
 
 # mibs : # Comment out this line
 
