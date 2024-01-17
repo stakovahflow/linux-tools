@@ -7,7 +7,6 @@
 # SNMP configuration
 
 **Backup iptables rules and current snmpd.conf:**
-
     sudo tar -cvzf "snmpd-iptables-backup-$(date +%Y%m%d).tgz" /etc/snmp /etc/iptables/rules.v4    
 
 
@@ -17,7 +16,6 @@
 **Add iptables firewall rules:**_
 
     sudo iptables -A INPUT -p tcp -m tcp --dport 161 -j ACCEPT
-
     sudo iptables -A INPUT -p udp -m udp --dport 161 -j ACCEPT
 
 
