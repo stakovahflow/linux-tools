@@ -73,7 +73,7 @@ rouser _superUser_ authpriv -V systemonly         # Please adjust to match the u
 CPU Thread/Core Count: 
 
 _OID: 1.3.6.1.2.1.25.3.3.1.2_
-
+ 
 
 
  
@@ -81,7 +81,7 @@ _OID: 1.3.6.1.2.1.25.3.3.1.2_
 Per-CPU Load: 
 
 _OID: 1.3.6.1.2.1.25.3.3.1.2_
-
+ 
 
 
  
@@ -89,7 +89,7 @@ _OID: 1.3.6.1.2.1.25.3.3.1.2_
 Load Average 1 minute: 
 
 _OID: 1.3.6.1.4.1.2021.10.1.3.1_
-
+ 
 
 
  
@@ -97,7 +97,7 @@ _OID: 1.3.6.1.4.1.2021.10.1.3.1_
 Load Average 5 minutes: 
 
 _OID: 1.3.6.1.4.1.2021.10.1.3.2_
-
+ 
 
 
  
@@ -105,7 +105,7 @@ _OID: 1.3.6.1.4.1.2021.10.1.3.2_
 Load Average 15 minutes: 
 
 _OID: 1.3.6.1.4.1.2021.10.1.3.3_
-
+ 
 
 
  
@@ -113,7 +113,7 @@ _OID: 1.3.6.1.4.1.2021.10.1.3.3_
 CPU Utilization: 
 
 _OID: 1.3.6.1.4.1.2021.11_
-
+ 
 
 
  
@@ -121,7 +121,7 @@ _OID: 1.3.6.1.4.1.2021.11_
 Memory Installed: 
 
 _OID: 1.3.6.1.2.1.25.2.2.0_
-
+ 
 
 
  
@@ -129,7 +129,7 @@ _OID: 1.3.6.1.2.1.25.2.2.0_
 Memory In Use: 
 
 _OID: 1.3.6.1.4.1.2021.4.6.0_
-
+ 
 
 
  
@@ -137,7 +137,7 @@ _OID: 1.3.6.1.4.1.2021.4.6.0_
 Memory Free: 
 
 _OID: 1.3.6.1.4.1.2021.4.11.0_
-
+ 
 
 
  
@@ -145,7 +145,7 @@ _OID: 1.3.6.1.4.1.2021.4.11.0_
 Swap Partition Size: 
 
 _OID: 1.3.6.1.4.1.2021.4.3.0_
-
+ 
 
 
  
@@ -153,7 +153,7 @@ _OID: 1.3.6.1.4.1.2021.4.3.0_
 Swap In Use:
 
 _OID: 1.3.6.1.4.1.2021.4.4.0_
-
+ 
 
 
  
@@ -161,7 +161,7 @@ _OID: 1.3.6.1.4.1.2021.4.4.0_
 Swap Free: 
 
 _OID: 1.3.6.1.4.1.2021.4.5.0_
-
+ 
 
 
  
@@ -169,7 +169,7 @@ _OID: 1.3.6.1.4.1.2021.4.5.0_
 Disks Installed: 
 
 _OID: 1.3.6.1.2.1.25.3.8_
-
+ 
 
 
  
@@ -177,7 +177,7 @@ _OID: 1.3.6.1.2.1.25.3.8_
 Partition Size for All Mounted Partitions:
 
 _OID: 1.3.6.1.2.1.25.2.3.1.5_
-
+ 
 
 
  
@@ -185,7 +185,7 @@ _OID: 1.3.6.1.2.1.25.2.3.1.5_
 Partition Mount Point: 
 
 _OID: 1.3.6.1.2.1.25.2.3.1.3_
-
+ 
 
 
  
@@ -193,7 +193,7 @@ _OID: 1.3.6.1.2.1.25.2.3.1.3_
 Partition Utilization: 
 
 _OID: 1.3.6.1.2.1.25.2.3.1.6_
-
+ 
 
 
  
@@ -201,7 +201,7 @@ _OID: 1.3.6.1.2.1.25.2.3.1.6_
 Total Size of a Storage Area:
 
 _OID: 1.3.6.1.2.1.25.2.3.1.5_
-
+ 
 
 
  
@@ -209,7 +209,7 @@ _OID: 1.3.6.1.2.1.25.2.3.1.5_
 Used Space of a Storage Area:
 
 _OID: 1.3.6.1.2.1.25.2.3.1.6_
-
+ 
 
 
  
@@ -217,7 +217,7 @@ _OID: 1.3.6.1.2.1.25.2.3.1.6_
 Running Processes: 
 
 _OID: 1.3.6.1.2.1.25.1.6.0_
-
+ 
 
 
  
@@ -225,7 +225,7 @@ _OID: 1.3.6.1.2.1.25.1.6.0_
 Network Interface Name: 
 
 _OID: 1.3.6.1.2.1.2.2.1.2_
-
+ 
 
 
  
@@ -233,7 +233,7 @@ _OID: 1.3.6.1.2.1.2.2.1.2_
 Network Interface IP Address:
 
 _OID: 1.3.6.1.2.1.4.20.1.2_
-
+ 
 
 
  
@@ -241,7 +241,7 @@ _OID: 1.3.6.1.2.1.4.20.1.2_
 Network Interface MAC Address:
 
 _OID: 1.3.6.1.2.1.2.2.1.6_
-
+ 
 
 
  
@@ -249,7 +249,7 @@ _OID: 1.3.6.1.2.1.2.2.1.6_
 Network interface index number (ifIndex):
 
 _OID: 1.3.6.1.2.1.2.2.1.1_
-
+ 
 
 
  
@@ -257,7 +257,7 @@ _OID: 1.3.6.1.2.1.2.2.1.1_
 Network interface Description (ifDescr):
 
 _OID: 1.3.6.1.2.1.2.2.1.2_
-
+ 
 
 
  
@@ -265,7 +265,7 @@ _OID: 1.3.6.1.2.1.2.2.1.2_
 Network interface bytes inbound (ifInOctets):
 
 _OID: 1.3.6.1.2.1.2.2.1.10_
-
+ 
 
 
  
@@ -273,7 +273,7 @@ _OID: 1.3.6.1.2.1.2.2.1.10_
 Network interface bytes outbound (ifOutOctets):
 
 _OID: 1.3.6.1.2.1.2.2.1.16_
-
+ 
 
 
  
@@ -281,7 +281,7 @@ _OID: 1.3.6.1.2.1.2.2.1.16_
 Network interface inbound errors (ifInErrors):
 
 _OID: 1.3.6.1.2.1.2.2.1.14_
-
+ 
 
 
  
@@ -289,7 +289,7 @@ _OID: 1.3.6.1.2.1.2.2.1.14_
 Network interface outbound errors (ifOutErrors):
 
 _OID: 1.3.6.1.2.1.2.2.1.20_
-
+ 
 
 
  
@@ -297,7 +297,7 @@ _OID: 1.3.6.1.2.1.2.2.1.20_
 Network interface operational status (ifOperStatus) (up/down):
 
 _OID: 1.3.6.1.2.1.2.2.1.8_
-
+ 
 
 
  
@@ -305,7 +305,7 @@ _OID: 1.3.6.1.2.1.2.2.1.8_
 Packets Received: 
 
 _OID: 1.3.6.1.2.1.2.2.1.11_
-
+ 
 
 
  
@@ -313,7 +313,7 @@ _OID: 1.3.6.1.2.1.2.2.1.11_
 Packets Sent: 
 
 _OID: 1.3.6.1.2.1.2.2.1.17_
-
+ 
 
 
  
@@ -321,7 +321,7 @@ _OID: 1.3.6.1.2.1.2.2.1.17_
 SNMP Messages Received:
 
 _OID: 1.3.6.1.2.1.11.1_
-
+ 
 
 
  
@@ -329,7 +329,7 @@ _OID: 1.3.6.1.2.1.11.1_
 SNMP Messages Sent:
 
 _OID: 1.3.6.1.2.1.11.2_
-
+ 
 
 
  
@@ -337,7 +337,7 @@ _OID: 1.3.6.1.2.1.11.2_
 Logged in Users:
 
 _OID:  1.3.6.1.2.1.25.1.5_
-
+ 
 
 
  
@@ -345,7 +345,7 @@ _OID:  1.3.6.1.2.1.25.1.5_
 Running Processes:
 
 _OID:  1.3.6.1.2.1.25.4.2.1.2_
-
+ 
 
 
  
@@ -353,6 +353,6 @@ _OID:  1.3.6.1.2.1.25.4.2.1.2_
 Running Process Arguments:
 
 _OID:  1.3.6.1.2.1.25.4.2.1.5_
-
+ 
 
 
