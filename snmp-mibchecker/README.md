@@ -38,6 +38,8 @@
 
     sudo nano /etc/snmp/snmpd.conf
 
+
+
     sysLocation     1110 Test St., Blah, CA          # Adjust to match appliance location
     sysContact      Dummy User dummy.user@domain.com # Adjust to match your support (team) name and email address
     sysServices     72                               # This should be fine as the default
