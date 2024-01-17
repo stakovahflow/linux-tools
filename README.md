@@ -34,11 +34,9 @@
 
     sudo nano /etc/snmp/snmp.conf
 
-# mibs : # Comment out this line
-
-**mibs ALL** # Add this line
-
-# The rest of the file should be fine
+    # mibs : # Comment out this line
+    mibs ALL # Add this line
+    # The rest of the file should be fine
 
 
 
