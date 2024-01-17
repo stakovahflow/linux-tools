@@ -32,7 +32,7 @@
 
 **Edit snmp.conf:**
 
-    nano /etc/snmp/snmp.conf
+    sudo nano /etc/snmp/snmp.conf
 
 # mibs : # Comment out this line
 
@@ -44,7 +44,7 @@
 
 **Edit snmpd.conf: (The following lines are an example configuration from my own lab, so please modify to your specific requirements.)**
 
-**_nano /etc/snmp/snmpd.conf_**
+    sudo nano /etc/snmp/snmpd.conf
 
     sysLocation     1110 Test St., Blah, CA          # Adjust to match appliance location
     sysContact      Dummy User dummy.user@domain.com # Adjust to match your support (team) name and email address
