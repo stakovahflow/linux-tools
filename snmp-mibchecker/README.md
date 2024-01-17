@@ -239,16 +239,16 @@ Running Process Arguments:
 
 # Reversion:
 
-Stop the SNMP daemon:
+**Stop the SNMP daemon:**
 
     sudo systemctl disable --now snmpd.service
 
 
-Restore the backup:
+**Restore the backup:**
 
     sudo tar -xvzf <path to backup file> -C /
 
 
-Restore iptables firewall rules:
+**Restore iptables firewall rules:**
 
     sudo /usr/sbin/iptables-restore /etc/iptables/rules.v4
