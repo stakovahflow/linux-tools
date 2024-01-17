@@ -1,9 +1,3 @@
-# linux-tools
-
-
-
-
-
 # SNMP configuration
 
 **Backup iptables rules and current snmpd.conf:**
@@ -54,11 +48,13 @@
     rouser superUser authpriv -V systemonly          # Please adjust to match the user of your choosing
 
 
+**Enable & start SNMP daemon:**
+    sudo systemctl enable --now snmpd.service
 
 
 **OIDs for monitoring via SNMP:**
 
-_
+
 
 CPU Thread/Core Count:
 
@@ -238,5 +234,21 @@ Running Processes:
 Running Process Arguments:
 
     OID: 1.3.6.1.2.1.25.4.2.1.5
-_
 
+
+
+# Reversion:
+
+Stop the SNMP daemon:
+
+    sudo systemctl disable --now snmpd.service
+
+
+Restore the backup:
+
+    sudo tar -xvzf <path to backup file> -C /
+
+
+Restore iptables firewall rules:
+
+    sudo /usr/sbin/iptables-restore /etc/iptables/rules.v4
