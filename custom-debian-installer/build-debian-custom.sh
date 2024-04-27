@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
+VERSION='2024-04-27'
+# This image is based on debian-live-standard:
+# https://cdimage.debian.org/debian-cd/12.5.0-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso
+
+ISODESC="dragonsnack custom amd64"
+ISONAME="dragonsnack-0.0.2-custom-amd64.iso"
+rm -rf "$ISONAME"
 rm -rf squashfs-root filesystem.squashfs
+
 echo "Downloading Google Chrome Installer:"
-curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+curl -o template/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-echo "Downloading VSCode Installer:"
-curl -O "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
-
-# https://cdimage.debian.org/debian-cd/12.5.0-live/amd64/iso-hybrid/
 echo "Install base utilities:"
 apt install -y squashfs-tools syslinux syslinux-efi isolinux xorriso fakeroot
 
@@ -48,11 +52,7 @@ echo "LANG=en_US.UTF-8" | sudo tee /etc/default/locale
 
 echo "Copying third-party packages to new root:"
 cp template/google-chrome-stable_current_amd64.deb squashfs-root/tmp
-cp template/code.deb squashfs-root/tmp
 cp template/xfce4-docklike-plugin.deb squashfs-root/tmp
-
-echo "Copying custom-packages.sh to /tmp"
-cp custom-packages.sh squashfs-root/tmp
 
 CUSTOMIZATIONS="tmp/customizations.sh"
 cat >squashfs-root/$CUSTOMIZATIONS <<EOF
@@ -72,7 +72,7 @@ apt upgrade -y
 sleep 2
 
 echo "Installing new packages:"
-apt install -y vim bash-completion doas firefox-esr fbautostart fbpager fluxbox fprintd galculator geany gimp gvfs gvfs-backends gvfs-fuse kitty libpam-fprintd lightdm neofetch network-manager-gnome network-manager-openconnect-gnome network-manager-openvpn-gnome network-manager-vpnc-gnome network-manager-l2tp-gnome network-manager-pptp-gnome network-manager-ssh-gnome python3 python3-paramiko python3-pexpect python3-tk xfce4 xfce4-goodies xorg xserver-xorg-input-all xserver-xorg-input-multitouch xserver-xorg-input-synaptics xserver-xorg-video-all zsh zsh-autosuggestions zsh-common zsh-syntax-highlighting transmission-gtk plymouth plymouth-themes git apt-transport-https
+apt install -y vim bash-completion doas firefox-esr fbautostart fbpager fluxbox fprintd galculator geany gimp gvfs gvfs-backends gvfs-fuse libpam-fprintd lightdm neofetch network-manager-gnome network-manager-openconnect-gnome network-manager-openvpn-gnome network-manager-vpnc-gnome network-manager-l2tp-gnome network-manager-pptp-gnome network-manager-ssh-gnome python3 python3-paramiko python3-pexpect python3-tk xfce4 xfce4-goodies xorg xserver-xorg-input-all xserver-xorg-input-multitouch xserver-xorg-input-synaptics xserver-xorg-video-all zsh zsh-autosuggestions zsh-common zsh-syntax-highlighting transmission-gtk plymouth plymouth-themes git apt-transport-https
 sleep 2
 
 echo "Enabling services:"
@@ -144,8 +144,8 @@ sed -i 's|iso/|./|g' iso/md5sum.txt
 sleep 2
 echo "Compiling ISO image:"
 xorriso -as mkisofs \
-   -r -V 'dragonsnack custom amd64' \
-   -o dragonsnack-0.0.2-custom-amd64.iso \
+   -r -V "$ISODESC" \
+   -o "$ISONAME" \
    -J -J -joliet-long -cache-inodes \
    -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
    -b isolinux/isolinux.bin \
