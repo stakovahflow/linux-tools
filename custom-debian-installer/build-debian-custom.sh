@@ -94,6 +94,8 @@ echo "Installing Docklike plugin for XFCE4:"
 apt install -y /tmp/xfce4-docklike-plugin.deb
 sleep 2
 
+echo "Cleaning out apt cache"
+
 echo "Changing root shell to zsh"
 chsh -s /usr/bin/zsh
 sleep 2
