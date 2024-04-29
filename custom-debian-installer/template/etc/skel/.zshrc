@@ -57,4 +57,4 @@ alias lh="ls -lh --color"
 alias history='history 1'
 
 # start neofetch
-if [[ -f $(which neofetch) ]]; then neofetch; fi
+#if [[ -f $(which neofetch) ]]; then neofetch; fi

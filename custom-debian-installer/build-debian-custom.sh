@@ -47,21 +47,20 @@ echo "Copying APT source lists for Chrome & VSCode:"
 cp "$CHROMEAPTSOURCE" "$VSCODEAPTSOURCE" "$SQUISHDIR/etc/apt/sources.list.d/"
 cp "$CHROMEAPTKEY" "$VSCODEAPTKEY" "$SQUISHDIR/etc/apt/trusted.gpg.d/"
 
-echo "Copying default profiles, XFCE4 settings, etc., to new root:"
-cp template/profile "$SQUISHDIR"/etc/
-cp template/zshrc "$SQUISHDIR"/etc/skel/.zshrc
-cp template/zlogout "$SQUISHDIR"/etc/skel/.zlogout
-cp template/vimrc "$SQUISHDIR"/etc/skel/.vimrc
-cp template/zshrc "$SQUISHDIR"/root/.zshrc
-cp template/zlogout "$SQUISHDIR"/root/.zlogout
-cp template/vimrc "$SQUISHDIR"/root/.vimrc
-
 echo "Copying adduser.conf for new user creation to new root:"
 cp template/adduser.conf "$SQUISHDIR"/etc/adduser.conf
 
-echo "Copying XFCE4 panel settings"
-mkdir -p "$SQUISHDIR"/etc/skel/.config
-cp -a template/xfce4 "$SQUISHDIR"/etc/skel/.config/
+echo "Copying default profiles, XFCE4 settings, etc., to new root:"
+cp template/etc/profile "$SQUISHDIR"/etc/
+
+echo "Copying skel settings to new root:"
+cp -a template/etc/skel "$SQUISHDIR"/etc/
+cp template/etc/skel/.zshrc "$SQUISHDIR"/root/.zshrc
+cp template/etc/skel/.zlogout "$SQUISHDIR"/root/.zlogout
+cp template/etc/skel/.vimrc "$SQUISHDIR"/root/.vimrc
+
+echo "Copying skel settings to new root:"
+cp -a template/etc/skel/* "$SQUISHDIR"/etc/skel
 
 echo "Copying background images to new root:"
 mkdir -p "$SQUISHDIR"/usr/share/backgrounds/dragonsnack
@@ -85,12 +84,18 @@ echo "Performing base updates:"
 apt update
 echo "Performing upgrades:"
 apt upgrade -y
+
 echo "Installing base packages:"
-apt install -y vim doas zsh zsh zsh-autosuggestions zsh-common zsh-syntax-highlighting neofetch network-manager git acpi powertop htop
+apt install -y vim build-essential doas zsh zsh zsh-autosuggestions zsh-common zsh-syntax-highlighting neofetch network-manager git acpi powertop htop python3 python3-pip python3-paramiko python3-pexpect python3-tk net-tools whois dnsutils openssh-server firmware-linux
+
 echo "Installing nice-to-have packages:"
-apt install -y bash-completion firefox-esr fprintd galculator geany gimp gvfs gvfs-backends gvfs-fuse libpam-fprintd lightdm  network-manager-gnome network-manager-openconnect-gnome network-manager-openvpn-gnome network-manager-vpnc-gnome network-manager-l2tp-gnome network-manager-pptp-gnome network-manager-ssh-gnome python3 python3-paramiko python3-pexpect python3-tk xfce4 xfce4-goodies xorg xserver-xorg-input-all xserver-xorg-input-multitouch xserver-xorg-input-synaptics xserver-xorg-video-all transmission-gtk git apt-transport-https docker docker-compose wireshark qemu-system virt-manager 
+apt install -y bash-completion firefox-esr fprintd galculator geany gimp gvfs gvfs-backends gvfs-fuse libpam-fprintd lightdm lightdm-settings lightdm-gtk-greeter lightdm-gtk-greeter-settings orca network-manager-gnome network-manager-openconnect-gnome network-manager-openvpn-gnome network-manager-vpnc-gnome network-manager-l2tp-gnome network-manager-pptp-gnome network-manager-ssh-gnome xfce4 xfce4-goodies xorg xserver-xorg-input-all xserver-xorg-input-multitouch xserver-xorg-input-synaptics xserver-xorg-video-all xfce4-appfinder xfce4-dev-tools xfce4-helpers xfce4-panel-profiles xfce4-session xfce4-timer-plugin xfce4-appmenu-plugin xfce4-dict xfce4-indicator-plugin xfce4-places-plugin xfce4-settings xfce4-verve-plugin xfce4-battery-plugin xfce4-diskperf-plugin xfce4-mailwatch-plugin xfce4-power-manager xfce4-smartbookmark-plugin xfce4-wavelan-plugin xfce4-clipman xfce4-mount-plugin xfce4-power-manager-data xfce4-sntray-plugin xfce4-weather-plugin xfce4-clipman-plugin xfce4-eyes-plugin xfce4-mpc-plugin xfce4-power-manager-plugins xfce4-sntray-plugin-common xfce4-whiskermenu-plugin xfce4-cpufreq-plugin xfce4-fsguard-plugin xfce4-netload-plugin xfce4-pulseaudio-plugin xfce4-systemload-plugin xfce4-windowck-plugin xfce4-cpugraph-plugin xfce4-genmon-plugin xfce4-notifyd xfce4-screenshooter xfce4-taskmanager xfce4-xkb-plugin xfce4-datetime-plugin xfce4-goodies xfce4-panel xfce4-sensors-plugin xfce4-terminal transmission-gtk git apt-transport-https docker docker-compose wireshark qemu-system virt-manager xscreensaver xscreensaver-data xscreensaver-data-extra xscreensaver-gl xscreensaver-gl-extra xscreensaver-screensaver-bsod xscreensaver-screensaver-dizzy 
 
 apt install -y code google-chrome-stable 
+
+systemctl disable sshd
+systemctl disable libvirtd
+systemctl disable docker
 
 echo "Enabling services:"
 systemctl enable dbus
@@ -111,9 +116,13 @@ echo "Adding default desktop background"
 mv /etc/alternatives/desktop-background /etc/alternatives/desktop-background-original
 ln -s /usr/share/backgrounds/dragonsnack/dragonsnack-bg-1920x1080.png /etc/alternatives/desktop-background
 
+
 echo "done."
 EOF
 
+echo "Setting LightDM background"
+cp template/lightdm-gtk-greeter.conf $SQUISHDIR/etc/lightdm/lightdm-gtk-greeter.conf
+cp template/etc/lightdm/lightdm.conf $SQUISHDIR/etc/lightdm/lightdm.conf
 
 echo "Removing history:"
 rm -rf "$SQUISHDIR"/root/.lesshst "$SQUISHDIR"/root/.viminfo "$SQUISHDIR"/root/.zsh_history "$SQUISHDIR"/root/.bash_history "$SQUISHDIR"/var/log/*.log
