@@ -121,11 +121,6 @@ ln -s /usr/share/backgrounds/dragonsnack/dragonsnack-bg-1920x1080.png /etc/alter
 echo "done."
 EOF
 
-echo "Setting LightDM background"
-mkdir -p "$SQUISHDIR"/etc/lightdm
-cp template/etc/lightdm/lightdm-gtk-greeter.conf "$SQUISHDIR"/etc/lightdm/lightdm-gtk-greeter.conf
-cp template/etc/lightdm/lightdm.conf "$SQUISHDIR"/etc/lightdm/lightdm.conf
-
 echo "Removing history:"
 rm -rf "$SQUISHDIR"/root/.lesshst "$SQUISHDIR"/root/.viminfo "$SQUISHDIR"/root/.zsh_history "$SQUISHDIR"/root/.bash_history "$SQUISHDIR"/var/log/*.log
 
@@ -136,6 +131,11 @@ echo "##############################################################"
 echo "Performing chroot operation"
 sudo chroot "$SQUISHDIR" "/$CUSTOMIZATIONS"
 echo "Completed chroot (hopefully it works)"
+
+echo "Setting LightDM background"
+mkdir -p "$SQUISHDIR"/etc/lightdm
+cp template/etc/lightdm/lightdm-gtk-greeter.conf "$SQUISHDIR"/etc/lightdm/lightdm-gtk-greeter.conf
+cp template/etc/lightdm/lightdm.conf "$SQUISHDIR"/etc/lightdm/lightdm.conf
 
 echo "##############################################################"
 echo "Cleaning up"
