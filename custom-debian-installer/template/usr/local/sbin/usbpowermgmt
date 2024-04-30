@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#powertop --auto-tune
+if [[ $EUID -ne 0 ]]; then
+	echo "Please execute command $0 with sudo permissions"
+	exit
+fi
+echo 5 > /sys/module/usbcore/parameters/autosuspend
+
+HIDDEVICES=$(ls /sys/bus/usb/drivers/usbhid | grep -oE '^[0-9]+-[0-9\.]+' | sort -u)
+for i in $HIDDEVICES; do
+  DEVICENAME=`cat /sys/bus/usb/devices/$i/product`
+  echo "Device: $DEVICENAME"
+  echo "$DEVICENAME:" | cat /sys/bus/usb/devices/$i/power/control
+  echo 'on' > /sys/bus/usb/devices/$i/power/control
+  echo "$DEVICENAME:" | cat /sys/bus/usb/devices/$i/power/control
+done
+echo "Done."
