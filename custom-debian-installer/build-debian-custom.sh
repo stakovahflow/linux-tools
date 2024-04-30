@@ -137,6 +137,10 @@ mkdir -p "$SQUISHDIR"/etc/lightdm
 cp template/etc/lightdm/lightdm-gtk-greeter.conf "$SQUISHDIR"/etc/lightdm/lightdm-gtk-greeter.conf
 cp template/etc/lightdm/lightdm.conf "$SQUISHDIR"/etc/lightdm/lightdm.conf
 
+echo "Copying local applications:"
+mkdir -p "$SQUISHDIR"/usr/local/sbin/
+cp template/usr/local/sbin/usbpowermgmt "$SQUISHDIR"/usr/local/sbin/usbpowermgmt
+echo "Done."
 echo "##############################################################"
 echo "Cleaning up"
 sleep 2
