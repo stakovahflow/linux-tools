@@ -2,6 +2,15 @@
 VERSION='2024-04-29'
 # This image is based on debian-live-standard:
 # https://cdimage.debian.org/debian-cd/12.5.0-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso
+ISOBASE="debian-live-12.5.0-amd64-standard.iso"
+if [[ ! -f $ISOBASE ]]; then 
+	echo "$ISOBASE does not exist. Downloading"; 
+	wget https://cdimage.debian.org/debian-cd/12.5.0-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso -O "$ISOBASE";
+else
+	echo "$ISOBASE exists. Skipping download"
+fi
+ls -lh "$ISOBASE"
+
 if [[ $UID -eq 0 ]]; then
 	echo "Running $0 as root";
 else
