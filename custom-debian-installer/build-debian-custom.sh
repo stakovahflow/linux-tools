@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-VERSION='2024-04-29'
+VERSION='2024-05-02'
 # This image is based on debian-live-standard:
 # https://cdimage.debian.org/debian-cd/12.5.0-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso
 ISOBASE="debian-live-12.5.0-amd64-standard.iso"
@@ -100,7 +100,7 @@ echo "Installing base packages:"
 apt install -y vim build-essential doas zsh zsh zsh-autosuggestions zsh-common zsh-syntax-highlighting neofetch network-manager git acpi powertop htop python3 python3-pip python3-paramiko python3-pexpect python3-tk net-tools whois dnsutils openssh-server firmware-linux
 
 echo "Installing nice-to-have packages:"
-apt install -y bash-completion firefox-esr fprintd galculator geany gimp gvfs gvfs-backends gvfs-fuse libpam-fprintd lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings orca network-manager-gnome network-manager-openconnect-gnome network-manager-openvpn-gnome network-manager-vpnc-gnome network-manager-l2tp-gnome network-manager-pptp-gnome network-manager-ssh-gnome xfce4 xfce4-goodies xorg xserver-xorg-input-all xserver-xorg-input-multitouch xserver-xorg-input-synaptics xserver-xorg-video-all xfce4-appfinder xfce4-dev-tools xfce4-helpers xfce4-panel-profiles xfce4-session xfce4-timer-plugin xfce4-appmenu-plugin xfce4-dict xfce4-indicator-plugin xfce4-places-plugin xfce4-settings xfce4-verve-plugin xfce4-battery-plugin xfce4-diskperf-plugin xfce4-mailwatch-plugin xfce4-power-manager xfce4-smartbookmark-plugin xfce4-wavelan-plugin xfce4-clipman xfce4-mount-plugin xfce4-power-manager-data xfce4-sntray-plugin xfce4-weather-plugin xfce4-clipman-plugin xfce4-eyes-plugin xfce4-mpc-plugin xfce4-power-manager-plugins xfce4-sntray-plugin-common xfce4-whiskermenu-plugin xfce4-cpufreq-plugin xfce4-fsguard-plugin xfce4-netload-plugin xfce4-pulseaudio-plugin xfce4-systemload-plugin xfce4-windowck-plugin xfce4-cpugraph-plugin xfce4-genmon-plugin xfce4-notifyd xfce4-screenshooter xfce4-taskmanager xfce4-xkb-plugin xfce4-datetime-plugin xfce4-goodies xfce4-panel xfce4-sensors-plugin xfce4-terminal transmission-gtk git apt-transport-https docker docker-compose wireshark qemu-system virt-manager xscreensaver xscreensaver-data xscreensaver-data-extra xscreensaver-gl xscreensaver-gl-extra xscreensaver-screensaver-bsod xscreensaver-screensaver-dizzy 
+apt install -y bash-completion firefox-esr fprintd galculator geany gimp gvfs gvfs-backends gvfs-fuse libpam-fprintd lightdm lightdm-settings orca network-manager-gnome network-manager-openconnect-gnome network-manager-openvpn-gnome network-manager-vpnc-gnome network-manager-l2tp-gnome network-manager-pptp-gnome network-manager-ssh-gnome xfce4 xfce4-goodies xorg xserver-xorg-input-all xserver-xorg-input-multitouch xserver-xorg-input-synaptics xserver-xorg-video-all xfce4-appfinder xfce4-dev-tools xfce4-helpers xfce4-panel-profiles xfce4-session xfce4-timer-plugin xfce4-appmenu-plugin xfce4-dict xfce4-indicator-plugin xfce4-places-plugin xfce4-settings xfce4-verve-plugin xfce4-battery-plugin xfce4-diskperf-plugin xfce4-mailwatch-plugin xfce4-power-manager xfce4-smartbookmark-plugin xfce4-wavelan-plugin xfce4-clipman xfce4-mount-plugin xfce4-power-manager-data xfce4-sntray-plugin xfce4-weather-plugin xfce4-clipman-plugin xfce4-eyes-plugin xfce4-mpc-plugin xfce4-power-manager-plugins xfce4-sntray-plugin-common xfce4-whiskermenu-plugin xfce4-cpufreq-plugin xfce4-fsguard-plugin xfce4-netload-plugin xfce4-pulseaudio-plugin xfce4-systemload-plugin xfce4-windowck-plugin xfce4-cpugraph-plugin xfce4-genmon-plugin xfce4-notifyd xfce4-screenshooter xfce4-taskmanager xfce4-xkb-plugin xfce4-datetime-plugin xfce4-goodies xfce4-panel xfce4-sensors-plugin xfce4-terminal transmission-gtk git apt-transport-https docker docker-compose wireshark qemu-system virt-manager xscreensaver xscreensaver-data xscreensaver-data-extra xscreensaver-gl xscreensaver-gl-extra xscreensaver-screensaver-bsod xscreensaver-screensaver-dizzy 
 
 apt install -y code google-chrome-stable 
 
@@ -143,8 +143,7 @@ echo "Completed chroot (hopefully it works)"
 
 echo "Setting LightDM background"
 mkdir -p "$SQUISHDIR"/etc/lightdm
-cp template/etc/lightdm/lightdm-gtk-greeter.conf "$SQUISHDIR"/etc/lightdm/lightdm-gtk-greeter.conf
-cp template/etc/lightdm/lightdm.conf "$SQUISHDIR"/etc/lightdm/lightdm.conf
+cp template/etc/lightdm/* "$SQUISHDIR"/etc/lightdm/
 
 echo "Copying local applications:"
 mkdir -p "$SQUISHDIR"/usr/local/sbin/
