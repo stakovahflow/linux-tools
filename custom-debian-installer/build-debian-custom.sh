@@ -118,8 +118,8 @@ apt install -y "/tmp/$DOCKLIKEPKG"
 
 echo "Clean up here"
 
-echo "Changing root shell to zsh"
-chsh -s /usr/bin/zsh
+#echo "Changing root shell to zsh"
+#chsh -s /usr/bin/zsh
 echo "Setting editor to vim basic"
 update-alternatives --set editor /usr/bin/vim.basic
 
@@ -143,7 +143,7 @@ echo "Completed chroot (hopefully it works)"
 
 echo "Setting LightDM background"
 mkdir -p "$SQUISHDIR"/etc/lightdm
-cp template/etc/lightdm/* "$SQUISHDIR"/etc/lightdm/
+up template/etc/lightdm/* "$SQUISHDIR"/etc/lightdm/
 
 echo "Copying local applications:"
 mkdir -p "$SQUISHDIR"/usr/local/sbin/
