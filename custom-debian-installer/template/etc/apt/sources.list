@@ -1,15 +1,23 @@
-#deb cdrom:[Official Debian GNU/Linux Live 12.5.0 standard 2024-02-10T11:07:25Z]/ bookworm main non-free-firmware
-
-deb http://deb.debian.org/debian/ bookworm main non-free-firmware
-deb-src http://deb.debian.org/debian/ bookworm main
+deb http://deb.debian.org/debian bookworm main non-free-firmware
+deb-src http://deb.debian.org/debian bookworm main non-free-firmware
 
 deb http://security.debian.org/debian-security bookworm-security main non-free-firmware
-deb-src http://security.debian.org/debian-security bookworm-security main
+deb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware
+
+deb http://deb.debian.org/debian bookworm-updates main non-free-firmware
+deb-src http://deb.debian.org/debian bookworm-updates main non-free-firmware
+
+
+##deb http://deb.debian.org/debian/ bookworm main non-free-firmware
+##deb-src http://deb.debian.org/debian/ bookworm main
+
+##deb http://security.debian.org/debian-security bookworm-security main non-free-firmware
+##deb-src http://security.debian.org/debian-security bookworm-security main
 
 # bookworm-updates, to get updates before a point release is made;
 # see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
-deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
-deb-src http://deb.debian.org/debian/ bookworm-updates main
+##deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
+##deb-src http://deb.debian.org/debian/ bookworm-updates main
 
 # This system was installed using small removable media
 # (e.g. netinst, live or single CD). The matching "deb cdrom"

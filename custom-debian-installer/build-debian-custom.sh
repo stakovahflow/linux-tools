@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-VERSION='2024-05-02'
+VERSION='2024-10-27'
 # This image is based on debian-live-standard:
-# https://cdimage.debian.org/debian-cd/12.5.0-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso
-ISOBASE="debian-live-12.5.0-amd64-standard.iso"
+# https://cdimage.debian.org/debian-cd/12.7.0-live/amd64/iso-hybrid/$ISOBASE
+ISOBASE="debian-live-12.7.0-amd64-standard.iso"
 if [[ ! -f $ISOBASE ]]; then 
 	echo "$ISOBASE does not exist. Downloading"; 
-	wget https://cdimage.debian.org/debian-cd/12.5.0-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso -O "$ISOBASE";
+	wget https://cdimage.debian.org/debian-cd/12.7.0-live/amd64/iso-hybrid/$ISOBASE -O "$ISOBASE";
 else
 	echo "$ISOBASE exists. Skipping download"
 fi
@@ -18,8 +18,8 @@ else
 	exit
 fi 
 
-ISODESC="dragonsnack custom amd64"
-ISONAME="dragonsnack-0.0.2-custom-amd64.iso"
+ISODESC="dragonsnack $VERSION custom amd64"
+ISONAME="dragonsnack-$VERSION-custom-amd64.iso"
 
 SQUISHED="filesystem.squashfs"
 SQUISHDIR="squashfs-root"
@@ -31,7 +31,7 @@ echo "Install base utilities:"
 apt install -y squashfs-tools syslinux syslinux-efi isolinux xorriso fakeroot
 
 echo "Extracting ISO"
-xorriso -osirrox on -indev "debian-live-12.5.0-amd64-standard.iso" -extract / iso && chmod -R +w iso
+xorriso -osirrox on -indev "$ISOBASE" -extract / iso && chmod -R +w iso
 sleep 5
 cp iso/live/filesystem.squashfs ./"$SQUISHED"
 
