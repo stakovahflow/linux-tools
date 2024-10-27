@@ -18,8 +18,8 @@ else
 	exit
 fi 
 
-ISODESC="dragonsnack $VERSION custom amd64"
-ISONAME="dragonsnack-$VERSION-custom-amd64.iso"
+ISODESC="dragonsnack $VERSION amd64"
+ISONAME="dragonsnack-$VERSION-amd64.iso"
 
 SQUISHED="filesystem.squashfs"
 SQUISHDIR="squashfs-root"
