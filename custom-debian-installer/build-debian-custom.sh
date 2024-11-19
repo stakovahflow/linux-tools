@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-VERSION='2024-10-27'
+VERSION='2024-11-18'
 # This image is based on debian-live-standard:
-# https://cdimage.debian.org/debian-cd/12.7.0-live/amd64/iso-hybrid/$ISOBASE
-ISOBASE="debian-live-12.7.0-amd64-standard.iso"
+# https://cdimage.debian.org/debian-cd/12.8.0-live/amd64/iso-hybrid/$ISOBASE
+ISOBASE="debian-live-12.8.0-amd64-standard.iso"
 if [[ ! -f $ISOBASE ]]; then 
 	echo "$ISOBASE does not exist. Downloading"; 
-	wget https://cdimage.debian.org/debian-cd/12.7.0-live/amd64/iso-hybrid/$ISOBASE -O "$ISOBASE";
+	wget https://cdimage.debian.org/debian-cd/12.8.0-live/amd64/iso-hybrid/$ISOBASE -O "$ISOBASE";
 else
 	echo "$ISOBASE exists. Skipping download"
 fi
