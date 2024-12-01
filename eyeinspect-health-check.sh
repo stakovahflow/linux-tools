@@ -1,7 +1,10 @@
 #!/bin/bash
 # eyeInspect-health-check
 # Updated: Allen Sowell
-EIHCversion='2024-08-14-a'
+EIHCversion='2024-12-01-a'
+
+currentdir=$(pwd)
+cd /tmp
 
 # description:
 # gathers system information, network information, and logs from a SilentDefense appliance
@@ -27,13 +30,14 @@ i=1
 DATED=$(date +%Y%m%d)
 HOSTNAME=$(hostname)
 EIHCLOGS="EIHC-Logs-$HOSTNAME-$DATED"
-LOGDIR="$(pwd)/$EIHCLOGS"
+LOGDIR="/tmp/$EIHCLOGS"
 TOMCATLOGDIR="$LOGDIR/tomcat"
-TARBALL="$EIHCLOGS.tar.gz"
+TARBALL="$currentdir/$EIHCLOGS.tar.gz"
 QUERYCMD='sudo -u postgres psql -P pager=off -q -d silentdefense -v ON_ERROR_STOP=1 -c'
 CCADDRESS=''
 USERNAME=''
 USERPASS=''
+
 BREAK() {
 	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
 }
@@ -415,6 +419,7 @@ cc_installed=$(apt-cache pkgnames | grep silentdefense-cc-core)
 sensor_installed=$(apt-cache pkgnames | grep silentdefense-nids)
 SENSORHEALTH=false
 SYSTEMINFO=$(dmidecode | grep -A 9 "^System Information" | grep -v "^System Information" | sed 's/^\t/\t\t/g')
+CCADDRESS="127.0.0.1"
 
 if [ -n "$cc_installed" ]; then
 	LINE
@@ -423,7 +428,7 @@ if [ -n "$cc_installed" ]; then
 	sensorCheck
 	###########################################################################
 	# Get CC Address, Admin Username, Admin Pasword from user input:
-	IFS= read -rp $'Command Center Address: ' CCADDRESS
+	#IFS= read -rp $'Command Center Address: ' CCADDRESS
 	IFS= read -rp $'CC Web Admin Username: ' USERNAME
 	IFS= read -rsp $'CC Web Admin Password: ' USERPASS
 	LINE
@@ -443,11 +448,10 @@ else
 	fi
 fi
 
-hw="$(lshw -short)"
 ifcon="$(ifconfig -a)"
 ip=$(echo -e "$ifcon" |grep "inet" |sed -e 's/^[ \t]*//' |head -n 1 |awk '{ print $2 }' |cut -d ":" -f 2)
 ips=$(echo -e "$ifcon" |grep "inet" |sed -e 's/^[ \t]*//' |awk '{ print "\t\t"$2 }' |cut -d ":" -f 2 | grep -v "^$")
-ifaces=$(echo -e "$ifcon" |grep "en" |awk '{ print $1 }' |grep "en")
+ifaces=$(ip -br a | grep -v "lo\|docker\|veth\|br-\|^$" | awk '{print $1}')
 
 LINE | tee -a "$mainlog"
 echo -e "Starting Health Check Export: $(date +%Y%m%d-%H%M%0S)" | tee -a "$mainlog"
@@ -498,7 +502,7 @@ fi
 
 echo -e "" | tee -a "$mainlog"
 echo -e "Silentdefense Package Information" | tee -a "$mainlog"
-dpkg -l | grep "silentdefense\|icsp\|nids" | awk '{print $2": "$3}' | sort | uniq | tee -a "$mainlog"
+column -t <<< $(dpkg-query --show | grep "silentdefense\|icsp\|nids") | sort | uniq | tee -a "$mainlog"
 LINE | tee -a "$mainlog"
 
 if [ -n "$cc_installed" ]; then
@@ -513,7 +517,6 @@ if [ -n "$cc_installed" ]; then
 	TOTALSENSORS=$(($PASSIVESENSORCOUNT + $ACTIVESENSORCOUNT))
 	echo "Total Sensors: $TOTALSENSORS"
 fi
-
 
 if [[ -f /etc/ntp.conf ]]; then
 	LINE >> "$mainlog"
@@ -535,17 +538,16 @@ fi
 
 LINE >> "$mainlog"
 echo -e "System Information" | tee -a "$mainlog"
-echo -e "$hw" |grep -E 'system' |sed -n -e 's/^.*\(system \)/\1/p' >> "$mainlog"
 
 LINE >> "$mainlog"
 echo -e "Processor Information" | tee -a "$mainlog"
-threads="$(lshw -short | grep processor | wc -l)"
+threads="$(lscpu | grep "^CPU(s):" | awk '{print $2}')"
 echo -e "CPU Threads: $threads" | tee -a "$mainlog"
-echo -e "$hw" |grep -E 'processor' |sed -n -e 's/^.*\(processor \)/\1/p' >> "$mainlog"
 
 LINE >> "$mainlog"
 echo -e "System Memory Information" | tee -a "$mainlog"
-echo -e "$hw" |grep -E 'System Memory' |sed -n -e 's/^.*\(memory \)/\1/p' >> "$mainlog"
+ram=$(lsmem | grep "^Total online memory:" | awk '{print $NF}')
+echo -e "System Memory: $ram" | tee -a "$mainlog"
 
 LINE >> "$mainlog"
 echo -e "Swap & Memory usage Information" | tee -a "$mainlog"
@@ -553,7 +555,8 @@ free -m >> "$mainlog"
 
 LINE >> "$mainlog"
 echo -e "System Disk Information" | tee -a "$mainlog"
-echo -e "$hw" |grep -E 'disk' |sed -n -e 's/^.*\(disk \)/\1/p' >> "$mainlog"
+# echo -e "$hw" |grep -E 'disk' |sed -n -e 's/^.*\(disk \)/\1/p' >> "$mainlog"
+lsblk --nodeps  | grep -v loop >> "$mainlog"
 
 LINE >> "$mainlog"
 echo -e "Filesystem Table Information (fstab)" | tee -a "$mainlog"
@@ -613,11 +616,12 @@ if [[ -r /etc/network/interfaces ]]; then
 	cat /etc/network/interfaces >> "netlog"
 fi
 
-echo -e "Primary NIC configuration"
+echo -e "Primary NIC configuration" | tee -a "$netlog"
 LINE >> "$netlog"
-while read -r x; do
-	ethtool "$x" >> "$netlog"
-done <<< "$ifaces"
+for interface in $(echo "$ifaces"); do
+	echo "Interface: $interface" | tee -a "$netlog"
+	ethtool "$interface" >> "$netlog"
+done
 
 LINE >> "$netlog"
 echo -e "Full ifconfig Details" | tee -a "$netlog"
@@ -665,7 +669,7 @@ fi
 LINE >> "$mainlog"
 packagelog=$(padded $i "Packages.log"); ((i++))
 echo -e "All Installed Packages Information: $packagelog" | tee -a "$mainlog"
-dpkg -l >> "$packagelog"
+column -t <<< $(sudo dpkg-query --show) >> "$packagelog"
 
 # SupervisorCTL:
 if [[ -f /usr/bin/supervisorctl ]]; then
@@ -805,6 +809,23 @@ if [ -n "$cc_installed" ]; then
 	cclicense=$(padded $i "cc.license"); ((i++))
 	echo -e "Command Center License: $cclicense" | tee -a "$mainlog"
 	sudo -u postgres psql -qAt -P pager=off -d silentdefense -c "select value from system_settings where key='command_center_license'" | base64 -d > "$cclicense"
+	expiration=$(grep expiryDate $cclicense | sed 's/expiryDate=//g')
+	expiration=$(grep expiryDate EIHC-Logs-cc55test-20241201/13_cc55test_cc.license | sed 's/expiryDate=//g')
+	converted=$(date -d "$expiration" +"%s")
+	echo "Converted date: $converted" | tee -a "$mainlog" 
+	current_date=$(date +"%s")
+	echo "Current date: $current_date" | tee -a "$mainlog"
+	if [ $current_date -lt $converted ]; then
+		licensediff=$(( $converted - $current_date )) 
+		validdays=$(( $licensediff / 86400 ))
+		echo "License valid for $validdays days"; 
+	elif [ $current_date -eq $converted ]; then 
+		echo 'Expiring today'; 
+	elif [ $current_date -gt $converted ]; then 
+		echo 'License expired'; 
+	fi
+	echo "License expiration: $expiration"
+	# Placeholder
 	
 	passivesensorlog=$(padded $i "Passive_Sensors_Details.csv"); ((i++))
 	echo -e "Current Passive Sensor Export: $passivesensorlog" | tee -a "$mainlog"
@@ -1169,6 +1190,8 @@ fi
 
 LINE | tee -a "$mainlog"
 echo -e "Completed Health Check Export: $(date +%Y%m%d-%H%M%0S)" | tee -a "$mainlog"
+
+sed -i 's/\/tmp\/EIHC-Logs/EIHC-Logs/g' "$mainlog"
 
 # Time to wrap:
 echo -e "Setting file ownership"
