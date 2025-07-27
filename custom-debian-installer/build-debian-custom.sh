@@ -5,7 +5,7 @@ VERSION='2025-07-27'
 ISOBASE="debian-live-12.11.0-amd64-standard.iso"
 if [[ ! -f $ISOBASE ]]; then 
 	echo "$ISOBASE does not exist. Downloading"; 
-	wget https://cdimage.debian.org/debian-cd/12.8.0-live/amd64/iso-hybrid/$ISOBASE -O "$ISOBASE";
+	wget https://cdimage.debian.org/debian-cd/12.11.0-live/amd64/iso-hybrid/$ISOBASE -O "$ISOBASE";
 else
 	echo "$ISOBASE exists. Skipping download"
 fi
